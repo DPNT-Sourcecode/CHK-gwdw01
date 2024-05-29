@@ -33,7 +33,10 @@ bogos = {
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus):
-    valid_string_re = re.compile("[ABCDE]*")
+    if skus == "":
+        return 0
+
+    valid_string_re = re.compile("[ABCDE]+")
     if not valid_string_re.fullmatch(skus):
         return -1
 
@@ -65,4 +68,5 @@ def checkout(skus):
         result += counts[sku] * base_prices[sku]
 
     return result
+
 
