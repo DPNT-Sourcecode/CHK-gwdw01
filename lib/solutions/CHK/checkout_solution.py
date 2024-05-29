@@ -127,8 +127,11 @@ def checkout(skus):
     string += "T"*t_count
     string += "X"*x_count
 
+    print(string)
+
     for i in range(0, batches*3):
         char = string[i]
+        print(f"removing {char}")
         counts[char] -= 1
 
     result += batches * 45
@@ -153,6 +156,7 @@ def checkout(skus):
         result += counts[sku] * base_prices[sku]
 
     return result
+
 
 
 
