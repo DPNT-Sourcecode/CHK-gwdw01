@@ -10,16 +10,16 @@ base_prices = {
 
 discounts = {
     "A": [{
-        "count": 3,
-        "price": 130
-    }, {
         "count": 5,
-        "price": 200,
+        "price": 200
+    }, {
+        "count": 3,
+        "price": 130,
     }],
-    "B": {
+    "B": [{
         "count": 2,
         "price": 45
-    }
+    }]
 }
 
 bogos = {
@@ -48,22 +48,27 @@ def checkout(skus):
     for sku in counts:
         count = counts[sku]
 
-        if sku == "A":
-            a_bulks = count // 3
-            result += a_bulks * 130
-            a_remainder = count % 3
-            result += a_remainder * 50
-        elif sku == "B":
-            a_bulks = count // 2
-            result += a_bulks * 45
-            a_remainder = count % 2
-            result += a_remainder * 30
-        elif sku == "C":
-            result += count * 20
-        elif sku == "D":
-            result += count * 15
+        if discounts.get(sku) is not None:
+            discounts[sku]
+
+
+        # if sku == "A":
+        #     a_bulks = count // 3
+        #     result += a_bulks * 130
+        #     a_remainder = count % 3
+        #     result += a_remainder * 50
+        # elif sku == "B":
+        #     a_bulks = count // 2
+        #     result += a_bulks * 45
+        #     a_remainder = count % 2
+        #     result += a_remainder * 30
+        # elif sku == "C":
+        #     result += count * 20
+        # elif sku == "D":
+        #     result += count * 15
 
     return result
+
 
 
 
