@@ -46,31 +46,15 @@ def checkout(skus):
             counts[char] = 1
 
     for sku in counts:
-        count = counts[sku]
-
         if discounts.get(sku) is not None:
-            discounts[sku]
+            discount_arr = discounts[sku]
 
+            for discount_elem in discount_arr:
+                item_bulk = counts[sku] // discount_elem["count"]
+                if item_bulk != 0:
+                    result += item_bulk * discount_elem["price"]
+                    counts[sku] -= item_bulk * discount_elem["count"]
 
-        # if sku == "A":
-        #     a_bulks = count // 3
-        #     result += a_bulks * 130
-        #     a_remainder = count % 3
-        #     result += a_remainder * 50
-        # elif sku == "B":
-        #     a_bulks = count // 2
-        #     result += a_bulks * 45
-        #     a_remainder = count % 2
-        #     result += a_remainder * 30
-        # elif sku == "C":
-        #     result += count * 20
-        # elif sku == "D":
-        #     result += count * 15
+        result += counts[sku] * base_prices[sku]
 
     return result
-
-
-
-
-
-
