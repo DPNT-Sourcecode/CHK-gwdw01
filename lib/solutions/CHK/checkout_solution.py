@@ -5,23 +5,34 @@ base_prices = {
     "B": 30,
     "C": 20,
     "D": 15,
+    "E": 40,
 }
 
 discounts = {
-    "A": {
+    "A": [{
         "count": 3,
         "price": 130
-    },
+    }, {
+        "count": 5,
+        "price": 200,
+    }],
     "B": {
         "count": 2,
         "price": 45
     }
 }
 
+bogos = {
+    "E": {
+        "count": 2,
+        "discount": "B"
+    }
+}
+
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus):
-    valid_string_re = re.compile("[ABCD]*")
+    valid_string_re = re.compile("[ABCDE]*")
     if not valid_string_re.fullmatch(skus):
         return -1
 
@@ -53,6 +64,7 @@ def checkout(skus):
             result += count * 15
 
     return result
+
 
 
 
