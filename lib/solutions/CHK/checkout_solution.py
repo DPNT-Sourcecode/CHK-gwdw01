@@ -6,6 +6,7 @@ base_prices = {
     "C": 20,
     "D": 15,
     "E": 40,
+    "F": 10,
 }
 
 discounts = {
@@ -26,6 +27,10 @@ bogos = {
     "E": {
         "count": 2,
         "discount": "B"
+    },
+    "F": {
+        "count": 2,
+        "discount": "F"
     }
 }
 
@@ -68,6 +73,7 @@ def checkout(skus):
         result += counts[sku] * base_prices[sku]
 
     return result
+
 
 
 
