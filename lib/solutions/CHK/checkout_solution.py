@@ -112,8 +112,6 @@ def checkout(skus):
         else:
             counts[char] = 1
 
-    # ZYSTX
-
     z_count = counts.get("Z", 0)
     y_count = counts.get("Y", 0)
     s_count = counts.get("S", 0)
@@ -128,9 +126,12 @@ def checkout(skus):
     string += "S"*s_count
     string += "T"*t_count
     string += "X"*x_count
-    
-    if batches != 0:
 
+    for i in range(0, batches*3):
+        char = string[i]
+        counts[char] -= 1
+
+    result += batches * 45
 
     for bogo in bogos:
         bogo_count = counts.get(bogo, 0)
@@ -152,6 +153,7 @@ def checkout(skus):
         result += counts[sku] * base_prices[sku]
 
     return result
+
 
 
 
