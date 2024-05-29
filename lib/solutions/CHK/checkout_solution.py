@@ -41,7 +41,7 @@ def checkout(skus):
     if skus == "":
         return 0
 
-    valid_string_re = re.compile("[ABCDE]+")
+    valid_string_re = re.compile("[ABCDEF]+")
     if not valid_string_re.fullmatch(skus):
         return -1
 
@@ -54,11 +54,12 @@ def checkout(skus):
         else:
             counts[char] = 1
 
-    e_count = counts.get("E", 0)
-    free_bs = e_count // 2
-    bs_left = max(0, counts.get("B", 0) - free_bs)
+    for bogo in bogos:
+        bogo_count = counts.get(bogo, 0)
+        free_items = bogo_count // bogos[bogo]["count"]
+        items_left = max(0, counts.get(bogos[bogo]["discount"], 0) - free_items)
 
-    counts["B"] = bs_left
+        counts[bogos[bogo]["discount"]] = items_left
 
     for sku in counts:
         if discounts.get(sku) is not None:
@@ -73,6 +74,7 @@ def checkout(skus):
         result += counts[sku] * base_prices[sku]
 
     return result
+
 
 
 
