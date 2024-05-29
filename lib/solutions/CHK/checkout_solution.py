@@ -48,9 +48,24 @@ discounts = {
         "count": 5,
         "price": 45
     }],
-"K": [{
+    "K": [{
         "count": 2,
-        "price": 45
+        "price": 150
+    }],
+    "P": [{
+        "count": 5,
+        "price": 200
+    }],
+    "Q": [{
+        "count": 3,
+        "price": 80
+    }],
+    "V": [{
+        "count": 3,
+        "price": 130
+    }, {
+        "count": 2,
+        "price": 90
     }],
 }
 
@@ -62,7 +77,19 @@ bogos = {
     "F": {
         "count": 3,
         "discount": "F"
-    }
+    },
+    "N": {
+        "count": 3,
+        "discount": "M"
+    },
+    "R": {
+        "count": 3,
+        "discount": "Q"
+    },
+    "U": {
+        "count": 4,
+        "discount": "U"
+    },
 }
 
 
@@ -105,3 +132,4 @@ def checkout(skus):
         result += counts[sku] * base_prices[sku]
 
     return result
+
