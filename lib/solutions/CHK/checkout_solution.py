@@ -21,7 +21,7 @@ discounts = {
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus):
-    valid_string_re = re.compile("[ABCD]+")
+    valid_string_re = re.compile("[ABCD]*")
     if not valid_string_re.fullmatch(skus):
         return -1
 
@@ -53,6 +53,7 @@ def checkout(skus):
             result += count * 15
 
     return result
+
 
 
 
