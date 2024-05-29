@@ -50,7 +50,7 @@ discounts = {
     }],
     "K": [{
         "count": 2,
-        "price": 150
+        "price": 120
     }],
     "P": [{
         "count": 5,
@@ -112,6 +112,10 @@ def checkout(skus):
         else:
             counts[char] = 1
 
+    # ZYSTX
+
+    
+
     for bogo in bogos:
         bogo_count = counts.get(bogo, 0)
         free_items = bogo_count // bogos[bogo]["count"]
@@ -132,6 +136,7 @@ def checkout(skus):
         result += counts[sku] * base_prices[sku]
 
     return result
+
 
 
 
