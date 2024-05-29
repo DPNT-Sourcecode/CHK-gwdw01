@@ -49,9 +49,9 @@ def checkout(skus):
         else:
             counts[char] = 1
 
-    e_count = counts["E"]
+    e_count = counts.get("E", 0)
     free_bs = e_count // 2
-    bs_left = max(0, counts["B"] - free_bs)
+    bs_left = max(0, counts.get("B", 0) - free_bs)
 
     counts["B"] = bs_left
 
@@ -68,5 +68,6 @@ def checkout(skus):
         result += counts[sku] * base_prices[sku]
 
     return result
+
 
 
