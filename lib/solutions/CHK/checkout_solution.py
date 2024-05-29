@@ -99,7 +99,7 @@ def checkout(skus):
     if skus == "":
         return 0
 
-    valid_string_re = re.compile("[ABCDEF]+")
+    valid_string_re = re.compile("[A-Z]+")
     if not valid_string_re.fullmatch(skus):
         return -1
 
@@ -132,4 +132,5 @@ def checkout(skus):
         result += counts[sku] * base_prices[sku]
 
     return result
+
 
