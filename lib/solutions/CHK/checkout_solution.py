@@ -29,6 +29,7 @@ bogos = {
     }
 }
 
+
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus):
@@ -45,6 +46,12 @@ def checkout(skus):
         else:
             counts[char] = 1
 
+    e_count = counts["E"]
+    free_bs = e_count // 2
+    bs_left = max(0, counts["B"] - free_bs)
+
+    counts["B"] = bs_left
+
     for sku in counts:
         if discounts.get(sku) is not None:
             discount_arr = discounts[sku]
@@ -58,3 +65,4 @@ def checkout(skus):
         result += counts[sku] * base_prices[sku]
 
     return result
+
