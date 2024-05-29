@@ -114,7 +114,23 @@ def checkout(skus):
 
     # ZYSTX
 
+    z_count = counts.get("Z", 0)
+    y_count = counts.get("Y", 0)
+    s_count = counts.get("S", 0)
+    t_count = counts.get("T", 0)
+    x_count = counts.get("X", 0)
+
+    total = z_count+y_count+s_count+t_count+x_count
+    batches = total // 3
+
+    string = "Z"*z_count
+    string += "Y"*y_count
+    string += "S"*s_count
+    string += "T"*t_count
+    string += "X"*x_count
     
+    if batches != 0:
+
 
     for bogo in bogos:
         bogo_count = counts.get(bogo, 0)
@@ -136,6 +152,7 @@ def checkout(skus):
         result += counts[sku] * base_prices[sku]
 
     return result
+
 
 
 
